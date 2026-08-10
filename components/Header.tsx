@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Logo } from "./icons/Logo";
-import { navLinks } from "@/data/products";
+import { CategoryNav } from "./CategoryNav";
 
 function SearchIcon() {
   return (
@@ -16,165 +16,124 @@ function SearchIcon() {
 
 function UserIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
-      <path d="M4 20c1.6-4 5-6 8-6s6.4 2 8 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M4 20c1.6-4 5-6 8-6s6.4 2 8 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }
 
-function HeartIcon() {
+function OrdersIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CartIcon() {
+  return (
+    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2.5 2.5h2l1 2.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
       <path
-        d="M12 20s-7.5-4.6-10-9.3C.4 7 2.3 3.5 6 3.5c2 0 3.6 1.1 4.5 2.6.9-1.5 2.5-2.6 4.5-2.6 3.7 0 5.6 3.5 4 7.2C19.5 15.4 12 20 12 20Z"
+        d="M5.5 4.7h14.3a1 1 0 0 1 .96 1.28l-1.8 6.2a1.5 1.5 0 0 1-1.45 1.1H9.2a1.5 1.5 0 0 1-1.46-1.15L5.5 4.7Z"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.6"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function BagIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M6 8h12l1 12.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20.5L6 8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-      <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function MenuIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M9.2 13.3 8.3 16h9.9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="9.7" cy="19.3" r="1.5" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="16.5" cy="19.3" r="1.5" stroke="currentColor" strokeWidth="1.6" />
     </svg>
   );
 }
 
 export function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [cartCount] = useState(2);
+  const [cartCount] = useState(0);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
-      {/* Row 1: mobile menu, logo, search, actions */}
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:py-4">
-        <button
-          type="button"
-          className="text-brand-ink lg:hidden"
-          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-
-        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Bia Fashion Kids - página inicial">
-          <Logo className="h-12 w-12 sm:h-14 sm:w-14" />
-          <span className="hidden font-display text-xl font-bold text-brand-pink-600 sm:block">
-            Bia <span className="text-brand-gold-600">Fashion Kids</span>
-          </span>
+    <header className="relative z-50 bg-white shadow-sm">
+      {/* Row 1: logo, search, account actions */}
+      <div className="relative mx-auto flex max-w-7xl items-center gap-6 px-4 py-6 lg:gap-10 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Bia Fashion Kids - página inicial">
+          <Image
+            src="/logo/biafashionkids-logo.jpg"
+            alt="Bia Fashion Kids"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-full object-cover"
+            priority
+          />
         </Link>
 
         <form
           role="search"
-          className="ml-2 hidden flex-1 items-center rounded-full border-2 border-brand-pink-100 bg-brand-pink-50/60 px-4 py-2 focus-within:border-brand-pink-400 md:flex"
+          className="hidden w-full max-w-[380px] items-center rounded-xl border border-gray-300 bg-white px-4 py-2 md:absolute md:left-1/2 md:flex md:-translate-x-1/2"
           onSubmit={(e) => e.preventDefault()}
         >
-          <SearchIcon />
           <input
             type="search"
-            placeholder="Buscar vestidos, conjuntos, calçados..."
-            className="w-full bg-transparent px-3 text-sm text-brand-ink placeholder:text-brand-ink/50 focus:outline-none"
+            placeholder="O que você procura?"
+            className="w-full bg-transparent text-sm text-black placeholder:text-gray-400 focus:outline-none"
             aria-label="Buscar produtos"
           />
           <button
             type="submit"
-            className="rounded-full bg-brand-pink-500 px-4 py-1.5 text-sm font-bold text-white transition hover:bg-brand-pink-600"
+            aria-label="Buscar"
+            className="shrink-0 border-l border-gray-200 pl-3 text-gray-500"
           >
-            Buscar
+            <SearchIcon />
           </button>
         </form>
 
-        <nav className="ml-auto flex items-center gap-3 text-brand-ink sm:gap-5">
-          <Link href="#" className="hidden items-center gap-1 text-xs font-semibold sm:flex flex-col sm:flex-row" aria-label="Minha conta">
+        <div className="ml-auto flex shrink-0 items-center gap-8 text-brand-ink">
+          <Link href="#" className="group hidden items-center gap-2 text-base text-gray-600 lg:flex">
             <UserIcon />
-            <span className="hidden lg:inline">Entrar</span>
+            <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
+              Minha Conta
+            </span>
           </Link>
-          <Link href="#" className="relative" aria-label="Lista de desejos">
-            <HeartIcon />
+          <Link href="#" className="group hidden items-center gap-2 text-base text-gray-600 lg:flex">
+            <OrdersIcon />
+            <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
+              Meus Pedidos
+            </span>
           </Link>
-          <Link href="#carrinho" className="relative" aria-label={`Carrinho, ${cartCount} itens`}>
-            <BagIcon />
+          <Link
+            href="#carrinho"
+            className="flex items-center gap-1 text-gray-600"
+            aria-label={`Carrinho, ${cartCount} itens`}
+          >
+            <CartIcon />
             {cartCount > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-gold-500 text-[11px] font-bold text-brand-ink">
-                {cartCount}
-              </span>
+              <span className="text-sm font-bold text-brand-pink-600">({cartCount})</span>
             )}
           </Link>
-        </nav>
+        </div>
       </div>
 
       {/* Mobile search */}
-      <div className="px-4 pb-3 md:hidden">
+      <div className="px-4 pb-4 md:hidden">
         <form
           role="search"
-          className="flex items-center rounded-full border-2 border-brand-pink-100 bg-brand-pink-50/60 px-4 py-2"
+          className="flex items-center rounded-xl border border-gray-300 bg-white px-4 py-2.5"
           onSubmit={(e) => e.preventDefault()}
         >
-          <SearchIcon />
           <input
             type="search"
-            placeholder="Buscar produtos..."
-            className="w-full bg-transparent px-3 text-sm text-brand-ink placeholder:text-brand-ink/50 focus:outline-none"
+            placeholder="O que você procura?"
+            className="w-full bg-transparent text-sm text-black placeholder:text-gray-400 focus:outline-none"
             aria-label="Buscar produtos"
           />
+          <button type="submit" aria-label="Buscar" className="shrink-0 border-l border-gray-200 pl-3 text-gray-500">
+            <SearchIcon />
+          </button>
         </form>
       </div>
 
-      {/* Row 2: category navigation, like Milon's category strip */}
-      <div className="hidden border-t border-brand-pink-100 bg-brand-pink-500 lg:block">
-        <nav className="mx-auto flex max-w-7xl items-center justify-center gap-8 px-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="py-3 text-sm font-bold uppercase tracking-wide text-white/90 transition hover:text-brand-gold-300"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      </div>
-
-      {/* Mobile drawer nav */}
-      {menuOpen && (
-        <nav className="border-t border-brand-pink-100 bg-brand-pink-500 lg:hidden">
-          <ul className="flex flex-col divide-y divide-white/10 px-4">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="block py-3 text-sm font-bold uppercase tracking-wide text-white"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <CategoryNav />
     </header>
   );
 }

@@ -1,43 +1,48 @@
 const benefits = [
   {
-    title: "Frete grátis",
-    text: "Em compras acima de R$ 199",
+    title: "Parcelamento",
+    text: "até 10x Sem Juros",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path d="M3 7h11v9H3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M14 10h4l3 3v3h-7z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <circle cx="7" cy="18" r="1.6" fill="currentColor" />
-        <circle cx="17" cy="18" r="1.6" fill="currentColor" />
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2.5" y="5" width="19" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M2.5 9.5h19" stroke="currentColor" strokeWidth="1.8" />
       </svg>
     ),
   },
   {
-    title: "Até 6x sem juros",
-    text: "No cartão de crédito",
+    title: "Avaliações",
+    text: "dos Clientes",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
-        <path d="M3 10h18" stroke="currentColor" strokeWidth="2" />
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2-4.5-4.4 6.2-.9L12 3Z"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
-    title: "Troca fácil",
-    text: "Até 30 dias após a compra",
+    title: "Frete Grátis",
+    text: "acima de R$ 299 ( Sul e sudeste)",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path d="M4 12a8 8 0 0 1 14-5.3M20 4v4h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M20 12a8 8 0 0 1-14 5.3M4 20v-4h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M1 9h2M2 12h2.5M1 15h2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M6 7h9v9H6z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M15 10.5h3.5L21 13v3h-6z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <circle cx="9" cy="18" r="1.6" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="18" cy="18" r="1.6" stroke="currentColor" strokeWidth="1.8" />
       </svg>
     ),
   },
   {
-    title: "Compra segura",
-    text: "Seus dados sempre protegidos",
+    title: "Site Confiável",
+    text: "100% Seguro",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -45,16 +50,30 @@ const benefits = [
 
 export function BenefitsBar() {
   return (
-    <section className="border-y border-brand-pink-100 bg-white" aria-label="Vantagens de comprar na Bia Fashion Kids">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-8 sm:grid-cols-4">
+    <section className="overflow-hidden bg-white text-brand-sky-500" aria-label="Vantagens de comprar na Bia Fashion Kids">
+      {/* Mobile: continuous carousel */}
+      <div className="py-6 sm:hidden">
+        <div className="flex w-max animate-marquee gap-12">
+          {[...benefits, ...benefits].map((b, i) => (
+            <div key={`${b.title}-${i}`} className="flex shrink-0 items-center gap-3">
+              <span className="shrink-0">{b.icon}</span>
+              <div className="whitespace-nowrap">
+                <p className="text-base font-bold text-black">{b.title}</p>
+                <p className="text-sm text-gray-500">{b.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: static row */}
+      <div className="mx-auto hidden max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-4 px-4 py-6 sm:flex sm:px-8">
         {benefits.map((b) => (
           <div key={b.title} className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-pink-50 text-brand-pink-500">
-              {b.icon}
-            </span>
+            <span className="shrink-0">{b.icon}</span>
             <div>
-              <p className="text-sm font-extrabold text-brand-ink">{b.title}</p>
-              <p className="text-xs text-brand-ink/60">{b.text}</p>
+              <p className="text-base font-bold text-black">{b.title}</p>
+              <p className="text-sm text-gray-500">{b.text}</p>
             </div>
           </div>
         ))}

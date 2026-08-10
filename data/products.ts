@@ -116,15 +116,6 @@ export const categories: Category[] = [
   { name: "Acessórios", href: "#produtos", icon: "accessory" },
 ];
 
-export const navLinks = [
-  { name: "Novidades", href: "#produtos" },
-  { name: "Meninas", href: "#produtos" },
-  { name: "Meninos", href: "#produtos" },
-  { name: "Bebês", href: "#produtos" },
-  { name: "Calçados", href: "#produtos" },
-  { name: "Promoções", href: "#promocoes" },
-];
-
 export function formatBRL(value: number): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }

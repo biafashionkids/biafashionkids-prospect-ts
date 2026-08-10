@@ -1,26 +1,26 @@
-import { TopBar } from "@/components/TopBar";
 import { Header } from "@/components/Header";
 import { HeroCarousel } from "@/components/HeroCarousel";
-import { CategoryGrid } from "@/components/CategoryGrid";
 import { BenefitsBar } from "@/components/BenefitsBar";
-import { ProductGrid } from "@/components/ProductGrid";
-import { PromoBanner } from "@/components/PromoBanner";
-import { Newsletter } from "@/components/Newsletter";
+import { BestSellers } from "@/components/BestSellers";
+import { meninosBestSellers, meninasBestSellers } from "@/data/bestSellers";
+import { BrandsCarousel } from "@/components/BrandsCarousel";
+import { PijamasPromo } from "@/components/PijamasPromo";
+import { Reviews } from "@/components/Reviews";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <TopBar />
       <Header />
       <main>
         <HeroCarousel />
         <BenefitsBar />
-        <CategoryGrid />
-        <ProductGrid />
-        <PromoBanner />
+        <BrandsCarousel />
+        <BestSellers title="Conjuntos Vendidos para Meninos" items={meninosBestSellers} />
+        <BestSellers title="Conjuntos Vendidos para Meninas" items={meninasBestSellers} />
+        <PijamasPromo />
+        <Reviews />
       </main>
-      <Newsletter />
       <Footer />
     </>
   );

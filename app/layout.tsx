@@ -1,23 +1,16 @@
 import type { Metadata } from "next";
-import { Baloo_2, Nunito } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
-const baloo = Baloo_2({
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-baloo",
-  display: "swap",
-});
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-nunito",
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Bia Fashion Kids | Moda Infantil com Carinho",
+  title: "Bia Fashion Kids: Bebê ao juvenil! Desde 2014🙌",
   description:
     "Roupas infantis para meninas e meninos com estilo, conforto e preço justo. Vestidos, conjuntos, camisas polo e muito mais na Bia Fashion Kids.",
   keywords: [
@@ -27,6 +20,9 @@ export const metadata: Metadata = {
     "roupa infantil menina",
     "roupa infantil menino",
   ],
+  icons: {
+    icon: "/logo/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -35,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${baloo.variable} ${nunito.variable}`}>
+    <html lang="pt-BR" className={roboto.variable}>
       <body>{children}</body>
     </html>
   );

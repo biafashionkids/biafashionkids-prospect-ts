@@ -21,4 +21,3 @@ export const iconMap: Record<IconKey, (props: SVGProps<SVGSVGElement>) => JSX.El
 };
 
 export * from "./ClothingIcons";
-export * from "./Logo";
