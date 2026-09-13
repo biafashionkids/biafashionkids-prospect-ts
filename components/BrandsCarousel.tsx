@@ -74,7 +74,7 @@ export function BrandsCarousel() {
               className="flex w-32 shrink-0 snap-start flex-col items-center gap-4 sm:w-36"
             >
               <div className="relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white p-3 shadow-sm sm:h-36 sm:w-36">
-                <Image src={brand.image} alt={`Logo ${brand.name}`} fill className="object-contain p-4" sizes="144px" />
+                <Image src={brand.image} alt={`Logo ${brand.name}`} fill className="rounded-full object-contain p-4" sizes="144px" />
               </div>
               <p className="text-base font-bold text-black">{brand.name}</p>
             </div>
