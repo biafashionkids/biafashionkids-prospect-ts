@@ -297,19 +297,6 @@ export function Footer() {
 
       <div className="scallop-divider mx-4 text-black/20 sm:mx-8" />
 
-      <div className="bg-[#F5F6F7] py-1">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 lg:px-8">
-          <Image
-            src="/footer/desenvolvido-por.png"
-            alt="Desenvolvido por"
-            width={256}
-            height={70}
-            className="h-20 w-auto object-contain"
-          />
-        </div>
-      </div>
-
-
       <a
         href={whatsappHref}
         target="_blank"

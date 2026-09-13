@@ -134,7 +134,7 @@ export function Header() {
             </Link>
 
             <div className="ml-auto flex items-center gap-4 text-brand-ink">
-              <Link href="#" aria-label="Entrar ou cadastrar-se">
+              <Link href="/entrar" aria-label="Entrar ou cadastrar-se">
                 <UserIcon size={26} />
               </Link>
               <Link href="/carrinho" className="relative" aria-label={`Carrinho, ${cartCount} itens`}>
@@ -190,15 +190,20 @@ export function Header() {
               <span className="font-bold text-black">Atendimento</span>
             </span>
           </Link>
-          <Link href="#" className="hidden items-center gap-2 text-gray-700 lg:flex">
+          <div className="hidden items-center gap-2 text-gray-700 lg:flex">
             <UserIcon />
             <span className="text-sm leading-tight">
               Olá, Bem-vindo(a)
               <br />
-              <span className="font-bold text-black">Entre</span> ou{" "}
-              <span className="font-bold text-black">Cadastre-se</span>
+              <Link href="/entrar" className="font-bold text-black hover:text-brand-pink-600">
+                Entre
+              </Link>{" "}
+              ou{" "}
+              <Link href="/cadastrar-se" className="font-bold text-black hover:text-brand-pink-600">
+                Cadastre-se
+              </Link>
             </span>
-          </Link>
+          </div>
           <Link
             href="/carrinho"
             className="flex items-center gap-2 text-gray-700"
