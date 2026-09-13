@@ -43,7 +43,7 @@ export function BrandsCarousel() {
           type="button"
           onClick={() => scrollByItem(-1)}
           aria-label="Ver marcas anteriores"
-          className="absolute left-0 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-brand-ink shadow-md transition hover:bg-gray-50 sm:flex"
+          className="absolute left-0 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-brand-ink shadow-md transition hover:bg-gray-50"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="m15 6-6 6 6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -53,7 +53,7 @@ export function BrandsCarousel() {
           type="button"
           onClick={() => scrollByItem(1)}
           aria-label="Ver mais marcas"
-          className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 translate-x-1/2 rounded-full bg-white p-2 text-brand-ink shadow-md transition hover:bg-gray-50 sm:flex"
+          className="absolute right-0 top-1/2 z-10 flex -translate-y-1/2 translate-x-1/2 rounded-full bg-white p-2 text-brand-ink shadow-md transition hover:bg-gray-50"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="m9 6 6 6-6 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -62,7 +62,7 @@ export function BrandsCarousel() {
 
         <div
           ref={scrollRef}
-          className="flex snap-x snap-mandatory gap-16 overflow-x-auto scroll-smooth pb-2 lg:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 sm:gap-10 lg:justify-center lg:gap-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {brands.map((brand) => (
             <div

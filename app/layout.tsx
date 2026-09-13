@@ -10,7 +10,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Bia Fashion Kids: Bebê ao juvenil! Desde 2014🙌",
+  title: "Bia Fashion Kids - Bebê ao juvenil! Desde 2014🙌",
   description:
     "Roupas infantis para meninas e meninos com estilo, conforto e preço justo. Vestidos, conjuntos, camisas polo e muito mais na Bia Fashion Kids.",
   keywords: [

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function StarIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="#F4C21B" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#F4C21B" aria-hidden="true">
       <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2-4.5-4.4 6.2-.9L12 3Z" />
     </svg>
   );
@@ -14,6 +14,7 @@ function StarIcon() {
 type Review = {
   id: string;
   name: string;
+  location: string;
   date: string;
   text: string;
   photo: string;
@@ -25,6 +26,7 @@ const reviews: Review[] = [
   {
     id: "raissa",
     name: "Raissa",
+    location: "Joinville, SC",
     date: "21/10/2023",
     text: "Roupas de qualidade, preço bom! Vendedoras atenciosas e com vontade de atender, principalmente a Kelly",
     photo: IMG("photo-1494790108377-be9c29b29330"),
@@ -32,6 +34,7 @@ const reviews: Review[] = [
   {
     id: "beatriz",
     name: "Beatriz",
+    location: "Joinville, SC",
     date: "20/07/2022",
     text: "A melhor! Atendimento impecável, combinados a uma variedade que só encontro nesta loja! Super recomendo",
     photo: IMG("photo-1500648767791-00dcc994a43e"),
@@ -39,6 +42,7 @@ const reviews: Review[] = [
   {
     id: "dhuany",
     name: "Dhuany",
+    location: "Joinville, SC",
     date: "23/05/2022",
     text: "Amo essa loja, sou cliente há 5 anos... muita variedade em roupas... peças lindas, para todos os gostos e bolsos... sem contar as promoções",
     photo: IMG("photo-1544005313-94ddf0286df2"),
@@ -46,6 +50,7 @@ const reviews: Review[] = [
   {
     id: "patricia",
     name: "Patricia",
+    location: "Joinville, SC",
     date: "07/05/2022",
     text: "Gostei muito do atendimento, roupas lindas e preços ótimos! Super recomendo! Tem de tudo na loja!",
     photo: IMG("photo-1438761681033-6461ffad8d80"),
@@ -53,6 +58,7 @@ const reviews: Review[] = [
   {
     id: "darlene",
     name: "Darlene",
+    location: "Joinville, SC",
     date: "30/01/2022",
     text: "Peças de ótima qualidade e muita variedade, sempre antenados com a moda kids. Atendimento muito bom.",
     photo: IMG("photo-1524504388940-b1c1722653e1"),
@@ -60,6 +66,7 @@ const reviews: Review[] = [
   {
     id: "elizete",
     name: "Elizete",
+    location: "Joinville, SC",
     date: "05/09/2021",
     text: "Nossa! Loja apaixonante, muitas coisas lindas, com toda certeza a melhor loja de Joinville",
     photo: IMG("photo-1487412720507-e7ab37603c6f"),
@@ -67,6 +74,7 @@ const reviews: Review[] = [
   {
     id: "diego",
     name: "Diego",
+    location: "Joinville, SC",
     date: "25/07/2021",
     text: "Loja com bastante variedade... preço bom, o atendimento também é muito bom... dependendo o dia tem fila",
     photo: IMG("photo-1500917293891-ef795e70e1f6"),
@@ -74,6 +82,7 @@ const reviews: Review[] = [
   {
     id: "marcos",
     name: "Marcos",
+    location: "Joinville, SC",
     date: "13/10/2020",
     text: "Excelente atendimento, loja da linha kids mais completa de Joinville",
     photo: IMG("photo-1506794778202-cad84cf45f1d"),
@@ -81,6 +90,7 @@ const reviews: Review[] = [
   {
     id: "jucelaine",
     name: "Jucelaine",
+    location: "Joinville, SC",
     date: "27/09/2020",
     text: "Sempre que preciso de roupas pro meu filho... roupas são de ótima qualidade e um bom atendimento",
     photo: IMG("photo-1502685104226-ee32379fefbe"),
@@ -88,6 +98,7 @@ const reviews: Review[] = [
   {
     id: "joice",
     name: "Joice",
+    location: "Joinville, SC",
     date: "23/03/2019",
     text: "Atendimento excelente, roupas e calçados de qualidade. Amo comprar roupas para a Isa na Bia Fashion Kids",
     photo: IMG("photo-1489424731084-a5d8b219a5bb"),
@@ -137,8 +148,9 @@ export function Reviews() {
                   className="float-left mb-2 mr-4 h-16 w-16 rounded-full border-4 border-white object-cover shadow"
                 />
                 <p className="text-xl font-bold text-black">{review.name}</p>
-                <p className="text-sm text-black/50">{review.date}</p>
-                <div className="mt-1 flex gap-0.5">
+                <p className="text-sm text-black">Data da Avaliação: {review.date}</p>
+                <p className="text-sm text-black">{review.location}</p>
+                <div className="mt-1 flex -space-x-1">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <StarIcon key={j} />
                   ))}
