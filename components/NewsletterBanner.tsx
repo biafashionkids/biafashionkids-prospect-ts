@@ -15,7 +15,7 @@ export function NewsletterBanner() {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="bg-red-600 py-10" aria-label="Cadastro na newsletter">
+    <section className="bg-brand-sky-600 py-10" aria-label="Cadastro na newsletter">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 sm:px-8 lg:flex-row lg:justify-between">
         <div className="text-center lg:text-left">
           <h2 className="font-display text-xl font-extrabold text-white sm:text-2xl">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const banners = [
-  { id: "loja", label: "Arte: Imagem da loja", color: "bg-red-500", href: "#" },
+  { id: "loja", label: "Arte: Imagem da loja", color: "bg-brand-sky-500", href: "#" },
   { id: "outlet", label: "Arte: Imagem do outlet", color: "bg-blue-500", href: "#" },
 ];
 

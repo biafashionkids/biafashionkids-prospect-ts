@@ -7,12 +7,12 @@ import { iconMap } from "./icons";
 const tintBg: Record<Product["tint"], string> = {
   pink: "bg-brand-pink-50",
   sky: "bg-brand-sky-100",
-  gold: "bg-brand-gold-100",
+  gold: "bg-brand-sky-100",
 };
 
 const badgeStyle: Record<NonNullable<Product["badge"]>, string> = {
   Lançamento: "bg-brand-sky-500 text-white",
-  "Mais vendido": "bg-brand-gold-500 text-brand-ink",
+  "Mais vendido": "bg-brand-sky-500 text-brand-ink",
   "Últimas peças": "bg-brand-pink-500 text-white",
 };
 

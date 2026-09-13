@@ -23,11 +23,11 @@ const config: Config = {
             900: "#3B1424",
           },
           gold: {
-            100: "#FDF3D2",
-            300: "#FBE28A",
-            400: "#F8D34E",
-            500: "#F4C21B", // matches "Bia" lettering
-            600: "#D6A50E",
+            100: "#E4F6FC",
+            300: "#A9E1F3",
+            400: "#7ED2EC",
+            500: "#5AC0E3",
+            600: "#369CC0",
           },
           sky: {
             100: "#E4F6FC",
@@ -36,7 +36,7 @@ const config: Config = {
             500: "#5AC0E3", // matches shirt illustration
             600: "#369CC0",
           },
-          cream: "#FFF8F1",
+          cream: "#F2FBFE",
           ink: "#3A2130",
         },
       },

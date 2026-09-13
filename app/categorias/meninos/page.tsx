@@ -13,7 +13,7 @@ export default function CategoriaMeninosPage() {
       <Header />
       <main className="min-h-[60vh] bg-white">
         <Breadcrumb current="Meninos" />
-        <section aria-label="Destaques Meninos" className="h-[190px] bg-red-500 sm:h-[280px] lg:h-[480px]" />
+        <section aria-label="Destaques Meninos" className="h-[190px] bg-brand-sky-500 sm:h-[280px] lg:h-[480px]" />
       </main>
       <Footer />
     </>

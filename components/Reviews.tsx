@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function StarIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#F4C21B" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#5AC0E3" aria-hidden="true">
       <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2-4.5-4.4 6.2-.9L12 3Z" />
     </svg>
   );

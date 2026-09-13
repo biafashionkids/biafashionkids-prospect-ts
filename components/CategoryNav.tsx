@@ -10,8 +10,8 @@ const categories = [
   { name: "Outlet", href: "#" },
 ];
 
-const stripeColors = ["bg-brand-gold-400", "bg-brand-pink-500", "bg-brand-sky-400"];
-const hoverColors = ["md:hover:bg-brand-gold-400", "md:hover:bg-brand-pink-500", "md:hover:bg-brand-sky-400"];
+const stripeColors = ["bg-brand-sky-400", "bg-brand-pink-500", "bg-brand-sky-400"];
+const hoverColors = ["md:hover:bg-brand-sky-400", "md:hover:bg-brand-pink-500", "md:hover:bg-brand-sky-400"];
 
 export function CategoryNav({
   mobileOpen = false,

@@ -23,7 +23,7 @@ export function CategoryGrid() {
               href={cat.href}
               className="group flex flex-col items-center gap-3 rounded-xl2 border border-brand-pink-100 bg-white p-4 text-center shadow-card transition hover:-translate-y-1 hover:border-brand-pink-300"
             >
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-pink-50 transition group-hover:bg-brand-gold-100 sm:h-20 sm:w-20">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-pink-50 transition group-hover:bg-brand-sky-100 sm:h-20 sm:w-20">
                 <Icon className="h-10 w-10 sm:h-12 sm:w-12" aria-hidden="true" />
               </span>
               <span className="text-xs font-bold text-brand-ink sm:text-sm">{cat.name}</span>

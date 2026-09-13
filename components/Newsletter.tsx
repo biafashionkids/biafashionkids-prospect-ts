@@ -40,7 +40,7 @@ export function Newsletter() {
             />
             <button
               type="submit"
-              className="rounded-full bg-brand-gold-500 px-6 py-3 text-sm font-extrabold text-brand-ink transition hover:bg-brand-gold-400"
+              className="rounded-full bg-brand-sky-500 px-6 py-3 text-sm font-extrabold text-brand-ink transition hover:bg-brand-sky-400"
             >
               Quero meu cupom
             </button>

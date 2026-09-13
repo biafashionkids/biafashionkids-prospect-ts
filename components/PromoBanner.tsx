@@ -4,7 +4,7 @@ import { AccessoryIcon, DressIcon } from "./icons/ClothingIcons";
 export function PromoBanner() {
   return (
     <section id="promocoes" className="mx-auto max-w-7xl px-4 pb-4">
-      <div className="relative overflow-hidden rounded-xl2 bg-gradient-to-r from-brand-gold-400 to-brand-gold-500 px-6 py-10 sm:px-12 sm:py-14">
+      <div className="relative overflow-hidden rounded-xl2 bg-gradient-to-r from-brand-sky-400 to-brand-sky-500 px-6 py-10 sm:px-12 sm:py-14">
         <DressIcon className="pointer-events-none absolute -left-8 -top-6 h-40 w-40 rotate-[-12deg] opacity-20" aria-hidden="true" />
         <AccessoryIcon className="pointer-events-none absolute -right-6 -bottom-8 h-44 w-44 rotate-12 opacity-20" aria-hidden="true" />
 

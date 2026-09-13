@@ -79,7 +79,7 @@ export function ShoeIcon(props: SVGProps<SVGSVGElement>) {
     <svg viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M16 108c0-14 10-24 24-26l30-6c8-10 20-24 34-34 10-8 22 2 20 12l-4 16 30 4c22 3 40 12 44 30 1 6-3 12-9 12H24c-4 0-8-3-8-8Z"
-        fill="#F4C21B"
+        fill="#5AC0E3"
         stroke="#D6A50E"
         strokeWidth="4"
         strokeLinejoin="round"

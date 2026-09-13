@@ -46,7 +46,7 @@ export function AuthPage({ mode }: AuthPageProps) {
       <div className="mx-auto grid max-w-6xl overflow-hidden rounded-xl2 bg-white shadow-card lg:grid-cols-[0.9fr_1.1fr]">
         <aside className="relative hidden overflow-hidden bg-brand-pink-500 p-10 text-white lg:flex lg:flex-col lg:justify-between">
           <div className="absolute -right-20 top-16 h-64 w-64 rounded-full border-[28px] border-white/10" />
-          <div className="absolute -bottom-24 -left-20 h-72 w-72 rounded-full border-[34px] border-brand-gold-400/60" />
+          <div className="absolute -bottom-24 -left-20 h-72 w-72 rounded-full border-[34px] border-brand-sky-400/60" />
           <div className="relative z-10">
             <Link href="/" aria-label="Voltar para a página inicial">
               <Image
@@ -57,7 +57,7 @@ export function AuthPage({ mode }: AuthPageProps) {
                 className="h-[74px] w-[74px] rounded-full border-4 border-white object-cover"
               />
             </Link>
-            <p className="mt-12 max-w-xs text-sm font-bold uppercase tracking-[0.24em] text-brand-gold-100">
+            <p className="mt-12 max-w-xs text-sm font-bold uppercase tracking-[0.24em] text-brand-sky-100">
               Bia Fashion Kids
             </p>
             <p className="mt-4 max-w-sm text-3xl font-bold leading-tight text-white">
