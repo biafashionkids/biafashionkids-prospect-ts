@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import Image from "next/image";
 
 type Brand = {
   id: string;
@@ -11,12 +10,11 @@ type Brand = {
 };
 
 const brands: Brand[] = [
-  { id: "marca-1", name: "Marca 1" },
-  { id: "marca-2", name: "Marca 2" },
-  { id: "marca-3", name: "Marca 3" },
-  { id: "marca-4", name: "Marca 4" },
-  { id: "marca-5", name: "Marca 5" },
-  { id: "marca-6", name: "Marca 6" },
+  { id: "adidas", name: "Adidas", image: "/logo/adidas.png" },
+  { id: "pimpolho", name: "Pimpolho", image: "/logo/pimpolho.png" },
+  { id: "marca-7", name: "Marca 7" },
+  { id: "marca-8", name: "Marca 8" },
+  { id: "marca-9", name: "Marca 9" },
   { id: "marca-7", name: "Marca 7" },
   { id: "marca-8", name: "Marca 8" },
   { id: "marca-9", name: "Marca 9" },
