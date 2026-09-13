@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import Image from "next/image";
 
 type Brand = {
   id: string;
   name: string;
-  image?: string;
+  image: string;
 };
 
 const brands: Brand[] = [
@@ -16,6 +17,9 @@ const brands: Brand[] = [
   { id: "marca-4", name: "Marca 4" },
   { id: "marca-5", name: "Marca 5" },
   { id: "marca-6", name: "Marca 6" },
+  { id: "marca-7", name: "Marca 7" },
+  { id: "marca-8", name: "Marca 8" },
+  { id: "marca-9", name: "Marca 9" },
 ];
 
 export function BrandsCarousel() {
@@ -60,24 +64,14 @@ export function BrandsCarousel() {
           </svg>
         </button>
 
-        <div
-          ref={scrollRef}
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 sm:gap-10 lg:justify-center lg:gap-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-        >
-          {brands.map((brand) => (
-            <div
-              key={brand.id}
-              data-brand
-              className="flex w-28 shrink-0 snap-start flex-col items-center gap-4 sm:w-32"
-            >
-              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-xs text-gray-400 sm:h-32 sm:w-32">
-                {brand.image ? (
-                  <Image src={brand.image} alt={brand.name} fill className="object-cover" sizes="128px" />
-                ) : (
-                  "Logo"
-                )}
-              </div>
-              <p className="text-base font-bold text-black">{brand.name}</p>
+      <div
+        ref={scrollRef}
+        className="mt-8 flex snap-x snap-mandatory gap-[35px] overflow-x-auto scroll-smooth px-4 pb-2 sm:px-8 lg:justify-center lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
+        {brands.map((brand) => (
+          <div key={brand.id} data-brand className="flex shrink-0 snap-start flex-col items-center gap-3">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full border border-dashed border-gray-300 bg-gray-50 text-xs text-gray-400 sm:h-28 sm:w-28">
+              Logo
             </div>
           ))}
         </div>
