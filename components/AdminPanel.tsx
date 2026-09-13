@@ -8,6 +8,9 @@ type AdminView = "dashboard" | "products" | "sales";
 type Sale = {
   id: string;
   customer: string;
+  product: string;
+  category: "Menina" | "Menino" | "Bebê";
+  brand: string;
   items: number;
   total: number;
   status: "Pago" | "Enviado" | "Aguardando";
@@ -15,14 +18,15 @@ type Sale = {
 };
 
 const sales: Sale[] = [
-  { id: "#BF-1048", customer: "Mariana Souza", items: 2, total: 154.8, status: "Pago", date: "Hoje, 10:42" },
-  { id: "#BF-1047", customer: "Camila Oliveira", items: 1, total: 129.9, status: "Enviado", date: "Hoje, 09:18" },
-  { id: "#BF-1046", customer: "Rafael Martins", items: 3, total: 219.7, status: "Pago", date: "Ontem, 18:26" },
-  { id: "#BF-1045", customer: "Juliana Costa", items: 1, total: 89.9, status: "Aguardando", date: "Ontem, 16:03" },
-  { id: "#BF-1044", customer: "Ana Beatriz Lima", items: 2, total: 184.8, status: "Enviado", date: "12 set, 14:52" },
+  { id: "#BF-1048", customer: "Mariana Souza", product: "Vestido Flor de Lis", category: "Menina", brand: "Molekinha", items: 2, total: 154.8, status: "Pago", date: "Hoje, 10:42" },
+  { id: "#BF-1047", customer: "Camila Oliveira", product: "Tênis com Luz Colorido", category: "Menino", brand: "Nike", items: 1, total: 129.9, status: "Enviado", date: "Hoje, 09:18" },
+  { id: "#BF-1046", customer: "Rafael Martins", product: "Camisa Polo Listrada", category: "Menino", brand: "Adidas", items: 3, total: 219.7, status: "Pago", date: "Ontem, 18:26" },
+  { id: "#BF-1045", customer: "Juliana Costa", product: "Vestido Poá de Festa", category: "Menina", brand: "Charpey", items: 1, total: 89.9, status: "Aguardando", date: "Ontem, 16:03" },
+  { id: "#BF-1044", customer: "Ana Beatriz Lima", product: "Body Soft Nuvem", category: "Bebê", brand: "Pimpolho", items: 2, total: 184.8, status: "Enviado", date: "12 set, 14:52" },
 ];
 
 const categoryOptions = ["Menina", "Menino", "Bebê"] as const;
+const brandOptions = ["Todas as marcas", "Adidas", "Charpey", "Molekinha", "Nike", "Pimpolho"];
 const iconOptions: IconKey[] = ["dress", "polo", "onesie", "shorts", "shoe", "jacket", "accessory"];
 
 function Icon({ name }: { name: "grid" | "box" | "bag" | "plus" | "arrow" | "trend" | "menu" | "close" }) {
@@ -76,6 +80,9 @@ export function AdminPanel() {
   const [saved, setSaved] = useState(false);
   const [productSearch, setProductSearch] = useState("");
   const [saleFilter, setSaleFilter] = useState<"Todos" | Sale["status"]>("Todos");
+  const [saleCategory, setSaleCategory] = useState("Todas as categorias");
+  const [saleBrand, setSaleBrand] = useState("Todas as marcas");
+  const [saleSearch, setSaleSearch] = useState("");
 
   const revenue = useMemo(() => sales.reduce((total, sale) => total + sale.total, 0), []);
   const averageTicket = revenue / sales.length;
@@ -84,8 +91,15 @@ export function AdminPanel() {
     [products, productSearch],
   );
   const visibleSales = useMemo(
-    () => (saleFilter === "Todos" ? sales : sales.filter((sale) => sale.status === saleFilter)),
-    [saleFilter],
+    () => sales.filter((sale) => {
+      const matchesStatus = saleFilter === "Todos" || sale.status === saleFilter;
+      const matchesCategory = saleCategory === "Todas as categorias" || sale.category === saleCategory;
+      const matchesBrand = saleBrand === "Todas as marcas" || sale.brand === saleBrand;
+      const query = saleSearch.toLowerCase();
+      const matchesSearch = !query || sale.brand.toLowerCase().includes(query) || sale.product.toLowerCase().includes(query);
+      return matchesStatus && matchesCategory && matchesBrand && matchesSearch;
+    }),
+    [saleBrand, saleCategory, saleFilter, saleSearch],
   );
 
   const navigate = (nextView: AdminView) => {
@@ -202,7 +216,21 @@ export function AdminPanel() {
           )}
 
           {view === "sales" && (
-            <section className="rounded-xl2 bg-white p-5 shadow-card sm:p-7"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-sm text-brand-ink/55">Pedidos realizados na sua loja</p><h2 className="mt-1 text-2xl font-bold">Todas as vendas</h2></div><select value={saleFilter} onChange={(event) => setSaleFilter(event.target.value as "Todos" | Sale["status"])} className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500"><option>Todos</option><option>Pago</option><option>Enviado</option><option>Aguardando</option></select></div><div className="mt-7 overflow-x-auto"><table className="w-full min-w-[680px] text-left text-sm"><thead className="border-b border-brand-ink/10 text-xs uppercase tracking-wider text-brand-ink/45"><tr><th className="pb-3 font-bold">Pedido</th><th className="pb-3 font-bold">Cliente</th><th className="pb-3 font-bold">Itens</th><th className="pb-3 font-bold">Data</th><th className="pb-3 font-bold">Total</th><th className="pb-3 text-right font-bold">Status</th></tr></thead><tbody className="divide-y divide-brand-ink/5">{visibleSales.map((sale) => <tr key={sale.id}><td className="py-5 font-bold text-brand-pink-600">{sale.id}</td><td className="py-5 font-medium">{sale.customer}</td><td className="py-5 text-brand-ink/60">{sale.items} {sale.items === 1 ? "item" : "itens"}</td><td className="py-5 text-brand-ink/60">{sale.date}</td><td className="py-5 font-bold">{formatBRL(sale.total)}</td><td className="py-5 text-right"><StatusPill status={sale.status} /></td></tr>)}</tbody></table></div>{visibleSales.length === 0 && <p className="mt-6 rounded-lg bg-brand-sky-100 px-4 py-3 text-sm font-medium text-brand-sky-600">Nenhuma venda encontrada para esse status.</p>}</section>
+            <div className="space-y-6">
+              <div className="grid gap-3 rounded-xl2 bg-white p-4 shadow-card sm:grid-cols-2 xl:grid-cols-4">
+                <input value={saleSearch} onChange={(event) => setSaleSearch(event.target.value)} placeholder="Pesquisar marca ou produto" className="rounded-lg border border-brand-ink/15 px-3 py-2 text-sm outline-none focus:border-brand-pink-500 focus:ring-2 focus:ring-brand-pink-100" />
+                <select value={saleCategory} onChange={(event) => setSaleCategory(event.target.value)} className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500"><option>Todas as categorias</option>{categoryOptions.map((category) => <option key={category}>{category}</option>)}</select>
+                <select value={saleBrand} onChange={(event) => setSaleBrand(event.target.value)} className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500">{brandOptions.map((brand) => <option key={brand}>{brand}</option>)}</select>
+                <select value={saleFilter} onChange={(event) => setSaleFilter(event.target.value as "Todos" | Sale["status"])} className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500"><option>Todos</option><option>Pago</option><option>Enviado</option><option>Aguardando</option></select>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {categoryOptions.map((category) => {
+                  const categorySales = visibleSales.filter((sale) => sale.category === category);
+                  return <article key={category} className="rounded-xl2 bg-brand-pink-50 p-4"><p className="text-xs font-bold uppercase tracking-wider text-brand-pink-600">{category}</p><p className="mt-3 text-2xl font-bold text-brand-ink">{categorySales.reduce((total, sale) => total + sale.items, 0)} itens</p><p className="mt-1 text-xs text-brand-ink/60">{formatBRL(categorySales.reduce((total, sale) => total + sale.total, 0))} em vendas</p></article>;
+                })}
+              </div>
+              <section className="rounded-xl2 bg-white p-5 shadow-card sm:p-7"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-sm text-brand-ink/55">Pedidos realizados na sua loja</p><h2 className="mt-1 text-2xl font-bold">Todas as vendas</h2></div><p className="text-sm font-bold text-brand-sky-600">{visibleSales.length} pedidos encontrados</p></div><div className="mt-7 overflow-x-auto"><table className="w-full min-w-[820px] text-left text-sm"><thead className="border-b border-brand-ink/10 text-xs uppercase tracking-wider text-brand-ink/45"><tr><th className="pb-3 font-bold">Pedido</th><th className="pb-3 font-bold">Produto</th><th className="pb-3 font-bold">Marca</th><th className="pb-3 font-bold">Categoria</th><th className="pb-3 font-bold">Total</th><th className="pb-3 text-right font-bold">Status</th></tr></thead><tbody className="divide-y divide-brand-ink/5">{visibleSales.map((sale) => <tr key={sale.id}><td className="py-5 font-bold text-brand-pink-600">{sale.id}<span className="mt-1 block text-xs font-normal text-brand-ink/50">{sale.customer}</span></td><td className="py-5 font-medium">{sale.product}</td><td className="py-5 text-brand-ink/60">{sale.brand}</td><td className="py-5 text-brand-ink/60">{sale.category}</td><td className="py-5 font-bold">{formatBRL(sale.total)}</td><td className="py-5 text-right"><StatusPill status={sale.status} /></td></tr>)}</tbody></table></div>{visibleSales.length === 0 && <p className="mt-6 rounded-lg bg-brand-sky-100 px-4 py-3 text-sm font-medium text-brand-sky-600">Nenhuma venda encontrada com esses filtros.</p>}</section>
+            </div>
           )}
 
           {view === "products" && (
