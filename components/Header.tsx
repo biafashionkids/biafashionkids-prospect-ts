@@ -196,7 +196,7 @@ export function Header() {
         <div className="ml-auto flex shrink-0 items-center gap-8 text-brand-ink">
           <Link
             href="/admin"
-            className="hidden items-center gap-2 rounded-full bg-brand-sky-100 px-3 py-2 text-sm font-bold text-brand-sky-600 transition hover:bg-brand-sky-300 lg:flex"
+            className="hidden items-center gap-2 rounded-full bg-brand-sky-100 px-3 py-2 text-sm font-bold text-brand-sky-600 transition hover:bg-brand-sky-300 md:flex"
             aria-label="Abrir administração"
           >
             <AdminIcon />
