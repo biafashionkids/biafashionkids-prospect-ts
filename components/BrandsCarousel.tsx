@@ -62,14 +62,20 @@ export function BrandsCarousel() {
           </svg>
         </button>
 
-      <div
+        <div
         ref={scrollRef}
-        className="mt-8 flex snap-x snap-mandatory gap-[35px] overflow-x-auto scroll-smooth px-4 pb-2 sm:px-8 lg:justify-center lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
-        {brands.map((brand) => (
-          <div key={brand.id} data-brand className="flex shrink-0 snap-start flex-col items-center gap-3">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full border border-dashed border-gray-300 bg-gray-50 text-xs text-gray-400 sm:h-28 sm:w-28">
-              Logo
+          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 sm:gap-10 lg:justify-center lg:gap-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
+          {brands.map((brand) => (
+            <div
+              key={brand.id}
+              data-brand
+              className="flex w-28 shrink-0 snap-start flex-col items-center gap-4 sm:w-32"
+            >
+              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-gray-100 sm:h-32 sm:w-32">
+                <Image src={brand.image} alt={`Logo ${brand.name}`} fill className="object-contain p-4" sizes="128px" />
+              </div>
+              <p className="text-base font-bold text-black">{brand.name}</p>
             </div>
           ))}
         </div>
