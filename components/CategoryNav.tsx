@@ -7,7 +7,7 @@ const categories = [
   { name: "Avulsos", href: "#" },
   { name: "Calçados", href: "#" },
   { name: "Promoções", href: "#" },
-  { name: "Atacado", href: "#" },
+  { name: "Outlet", href: "#" },
 ];
 
 const stripeColors = ["bg-brand-gold-400", "bg-brand-pink-500", "bg-brand-sky-400"];
