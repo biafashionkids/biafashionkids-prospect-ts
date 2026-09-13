@@ -36,7 +36,7 @@ export function BrandsCarousel() {
     <section className="relative bg-white py-10" aria-label="Marcas">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <h2 className="text-center text-xl font-bold uppercase tracking-[0.3em] text-black sm:text-2xl">
-          Nossas Marcas
+         As melhores marcas
         </h2>
         <div className="mx-auto mt-2 h-1 w-14 bg-black" />
       </div>
