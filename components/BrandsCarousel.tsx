@@ -11,13 +11,14 @@ type Brand = {
 
 const brands: Brand[] = [
   { id: "adidas", name: "Adidas", image: "/logo/adidas.png" },
+  { id: "charpey", name: "Charpey", image: "/logo/charpey.png" },
+  { id: "fila", name: "Fila", image: "/logo/fila.png" },
+  { id: "minico", name: "Mini & co", image: "/logo/minico.jpeg" },
+  { id: "moleca", name: "Moleca", image: "/logo/moleca.png" },
+  { id: "molekinha", name: "Molekinha", image: "/logo/molekinha.jpeg" },
+  { id: "molekinho", name: "Molekinho", image: "/logo/molekinho.png" },
+  { id: "nike", name: "Nike", image: "/logo/nike.jpeg" },
   { id: "pimpolho", name: "Pimpolho", image: "/logo/pimpolho.png" },
-  { id: "marca-7", name: "Marca 7" },
-  { id: "marca-8", name: "Marca 8" },
-  { id: "marca-9", name: "Marca 9" },
-  { id: "marca-7", name: "Marca 7" },
-  { id: "marca-8", name: "Marca 8" },
-  { id: "marca-9", name: "Marca 9" },
 ];
 
 export function BrandsCarousel() {
@@ -63,7 +64,7 @@ export function BrandsCarousel() {
         </button>
 
         <div
-        ref={scrollRef}
+          ref={scrollRef}
           className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 sm:gap-10 lg:justify-center lg:gap-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {brands.map((brand) => (
@@ -72,7 +73,7 @@ export function BrandsCarousel() {
               data-brand
               className="flex w-28 shrink-0 snap-start flex-col items-center gap-4 sm:w-32"
             >
-              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-gray-100 sm:h-32 sm:w-32">
+              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white p-3 shadow-sm sm:h-32 sm:w-32">
                 <Image src={brand.image} alt={`Logo ${brand.name}`} fill className="object-contain p-4" sizes="128px" />
               </div>
               <p className="text-base font-bold text-black">{brand.name}</p>
