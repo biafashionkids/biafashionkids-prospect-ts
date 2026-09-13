@@ -67,8 +67,6 @@ const institutionalLinks = [
   "Política de pagamento",
 ];
 
-const programLinks = ["Blog Bia Fashion Kids", "Nossas Lojas", "Novidades"];
-
 const socials = [
   { name: "Instagram", href: "#", icon: InstagramIcon },
   { name: "Facebook", href: "#", icon: FacebookIcon },
@@ -89,7 +87,7 @@ export function Footer() {
   return (
     <footer className="relative bg-white text-black">
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <nav aria-label="Institucional">
           <Image
             src="/logo/biafashionkids-logo.jpg"
@@ -104,7 +102,7 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {institutionalLinks.map((link) => (
               <li key={link}>
-                <Link href="#" className="text-sm text-black/70 transition hover:text-black">
+                <Link href="#" className="text-sm uppercase text-black/70 transition hover:text-black">
                   {link}
                 </Link>
               </li>
@@ -138,30 +136,6 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Programas" className="pt-[108px]">
-          <ul className="space-y-2">
-            <li className="border-b border-black/15 pb-3">
-              <Link href="#" className="font-display text-sm font-bold text-black transition hover:text-brand-pink-600">
-                Seja uma revendedora
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="font-display text-sm font-bold text-black transition hover:text-brand-pink-600">
-                Trabalhe conosco
-              </Link>
-            </li>
-          </ul>
-          <ul className="mt-5 space-y-3">
-            {programLinks.map((link) => (
-              <li key={link}>
-                <Link href="#" className="text-sm text-black/70 transition hover:text-black">
-                  {link}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <div className="pt-[108px]">
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Acompanhe
@@ -186,7 +160,7 @@ export function Footer() {
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Compre seguro
           </h3>
-          <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-5">
+          <div className="mt-5 grid grid-cols-2 gap-x-2 gap-y-2">
             {paymentIcons.map((p) => (
               <Image
                 key={p.name}

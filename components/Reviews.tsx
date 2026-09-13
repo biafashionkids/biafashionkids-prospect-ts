@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 function StarIcon() {
@@ -91,44 +94,60 @@ const reviews: Review[] = [
   },
 ];
 
+function cardSizeClasses(state: "hovered" | "neighbor" | "base") {
+  if (state === "hovered") return "w-80 h-72 sm:w-96 sm:h-80";
+  if (state === "neighbor") return "w-64 h-56 sm:w-72 sm:h-64";
+  return "w-72 h-64 sm:w-80 sm:h-72";
+}
+
 export function Reviews() {
   const track = [...reviews, ...reviews];
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="overflow-hidden bg-white py-12" aria-label="Avaliações de clientes">
+    <section className="bg-white py-12" aria-label="Avaliações de clientes">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide text-black">Avaliações</h2>
+        <h2 className="text-center text-xl font-bold uppercase tracking-[0.3em] text-black sm:text-2xl">Avaliações</h2>
         <div className="mx-auto mt-2 h-1 w-14 bg-black" />
       </div>
 
-      <div className="mt-8">
+      <div className="mx-auto mt-8 max-w-7xl overflow-hidden px-4 sm:px-8">
         <div
-          className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]"
+          className="flex w-max items-center gap-6 animate-marquee hover:[animation-play-state:paused]"
           style={{ animationDuration: "40s" }}
         >
-          {track.map((review, i) => (
-            <div
-              key={`${review.id}-${i}`}
-              className="w-80 shrink-0 rounded-xl border border-black/10 bg-white p-5 shadow-sm sm:w-96"
-            >
-              <Image
-                src={review.photo}
-                alt={review.name}
-                width={64}
-                height={64}
-                className="float-left mb-2 mr-4 h-16 w-16 rounded-full border-4 border-white object-cover shadow"
-              />
-              <p className="text-xl font-bold text-black">{review.name}</p>
-              <p className="text-sm text-black/50">{review.date}</p>
-              <div className="mt-1 flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <StarIcon key={j} />
-                ))}
+          {track.map((review, i) => {
+            const state: "hovered" | "neighbor" | "base" =
+              hoveredIndex === i ? "hovered" : hoveredIndex !== null && Math.abs(hoveredIndex - i) === 1 ? "neighbor" : "base";
+
+            return (
+              <div
+                key={`${review.id}-${i}`}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`shrink-0 overflow-hidden rounded-xl border border-black/10 bg-white p-5 shadow-sm transition-all duration-300 ease-out ${
+                  state === "hovered" ? "z-10 shadow-lg" : ""
+                } ${cardSizeClasses(state)}`}
+              >
+                <Image
+                  src={review.photo}
+                  alt={review.name}
+                  width={64}
+                  height={64}
+                  className="float-left mb-2 mr-4 h-16 w-16 rounded-full border-4 border-white object-cover shadow"
+                />
+                <p className="text-xl font-bold text-black">{review.name}</p>
+                <p className="text-sm text-black/50">{review.date}</p>
+                <div className="mt-1 flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <StarIcon key={j} />
+                  ))}
+                </div>
+                <p className="mt-2 text-base text-black">{review.text}</p>
+                <div className="clear-both" />
               </div>
-              <p className="mt-2 text-base text-black">{review.text}</p>
-              <div className="clear-both" />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

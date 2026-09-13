@@ -65,14 +65,14 @@ const config: Config = {
           "50%": { transform: "translateY(-8px)" },
         },
         fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(3px)" },
+          "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         marquee: "marquee 22s linear infinite",
         float: "float 4s ease-in-out infinite",
-        fadeIn: "fadeIn 0.25s ease-out",
+        fadeIn: "fadeIn 1s ease-out both",
       },
     },
   },

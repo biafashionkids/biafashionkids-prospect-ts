@@ -1,8 +1,6 @@
 import { Header } from "@/components/Header";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { BenefitsBar } from "@/components/BenefitsBar";
-import { BestSellers } from "@/components/BestSellers";
-import { meninosBestSellers, meninasBestSellers } from "@/data/bestSellers";
 import { BrandsCarousel } from "@/components/BrandsCarousel";
 import { PijamasPromo } from "@/components/PijamasPromo";
 import { Reviews } from "@/components/Reviews";
@@ -13,12 +11,18 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <HeroCarousel />
-        <BenefitsBar />
-        <BrandsCarousel />
-        <BestSellers title="Conjuntos Vendidos para Meninos" items={meninosBestSellers} />
-        <BestSellers title="Conjuntos Vendidos para Meninas" items={meninasBestSellers} />
-        <Reviews />
+        <div className="animate-fadeIn">
+          <HeroCarousel />
+        </div>
+        <div className="animate-fadeIn" style={{ animationDelay: "150ms" }}>
+          <BenefitsBar />
+        </div>
+        <div className="animate-fadeIn" style={{ animationDelay: "300ms" }}>
+          <BrandsCarousel />
+        </div>
+        <div className="animate-fadeIn" style={{ animationDelay: "450ms" }}>
+          <Reviews />
+        </div>
       </main>
       <Footer />
     </>
