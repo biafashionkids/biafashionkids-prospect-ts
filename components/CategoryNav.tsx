@@ -4,10 +4,8 @@ const categories = [
   { name: "Lançamentos", href: "#" },
   { name: "Meninas", href: "/categorias/meninas" },
   { name: "Meninos", href: "/categorias/meninos" },
-  { name: "Avulsos", href: "#" },
   { name: "Calçados", href: "#" },
-  { name: "Promoções", href: "#" },
-  { name: "Outlet", href: "#" },
+  { name: "Acessórios", href: "#" },
 ];
 
 const stripeColors = ["bg-brand-sky-400", "bg-brand-pink-500", "bg-brand-sky-400"];
