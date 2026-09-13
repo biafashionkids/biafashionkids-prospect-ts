@@ -13,8 +13,8 @@ type AuthPageProps = {
 const content = {
   login: {
     eyebrow: "Minha conta",
-    title: "Que bom ter você de volta",
-    description: "Entre para acompanhar seus pedidos e salvar seus favoritos.",
+    title: "Que bom ter você de volta!",
+    description: "Entre para acompanhar seus pedidos e adicionar seus looks preferidos no carrinho.",
     submit: "Entrar na minha conta",
     alternate: "Ainda não tem uma conta?",
     alternateAction: "Cadastre-se",
@@ -22,7 +22,7 @@ const content = {
   },
   signup: {
     eyebrow: "Crie sua conta",
-    title: "Tudo pronto para descobrir a coleção",
+    title: "Tudo pronto para descobrir os looks mais lindos",
     description: "Cadastre-se para ter uma experiência mais prática na Bia Fashion Kids.",
     submit: "Criar minha conta",
     alternate: "Já tem uma conta?",
@@ -61,11 +61,11 @@ export function AuthPage({ mode }: AuthPageProps) {
               Bia Fashion Kids
             </p>
             <p className="mt-4 max-w-sm text-3xl font-bold leading-tight text-white">
-              Pequenos estilos, grandes histórias.
+              Desde 2014, do bebê ao juvenil!
             </p>
           </div>
           <p className="relative z-10 max-w-xs text-sm leading-6 text-white/80">
-            Moda infantil escolhida para acompanhar cada fase com conforto e personalidade.
+            Moda infantil escolhida para acompanhar cada fase com conforto e estilo.
           </p>
         </aside>
 
