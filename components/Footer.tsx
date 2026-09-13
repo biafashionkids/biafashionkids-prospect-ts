@@ -16,7 +16,7 @@ function PhoneIcon() {
 
 function InstagramIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="4" y="4" width="16" height="16" rx="4.5" stroke="currentColor" strokeWidth="1.7" />
       <circle cx="12" cy="12" r="3.6" stroke="currentColor" strokeWidth="1.7" />
       <circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" />
@@ -26,7 +26,7 @@ function InstagramIcon() {
 
 function FacebookIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M14 8.5h2V5.3c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.6H5.7V16h2.8v8h3.4v-8h2.7l.4-3.4h-3.1V10c0-1 .3-1.5 1.7-1.5Z" />
     </svg>
   );
@@ -34,7 +34,7 @@ function FacebookIcon() {
 
 function TikTokIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M16.2 3h-3v13a2.6 2.6 0 1 1-2.3-2.6v-3.1a5.7 5.7 0 1 0 5.3 5.7V9.4a7.6 7.6 0 0 0 4.3 1.3V7.6c-1.9 0-3.5-1.1-4-2.9-.2-.5-.3-1.1-.3-1.7Z" />
     </svg>
   );
@@ -91,6 +91,13 @@ export function Footer() {
 
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
         <nav aria-label="Institucional">
+          <Image
+            src="/logo/biafashionkids-logo.jpg"
+            alt="Bia Fashion Kids"
+            width={88}
+            height={88}
+            className="mb-5 h-[88px] w-[88px] rounded-full object-cover"
+          />
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Institucional
           </h3>
@@ -105,7 +112,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div>
+        <div className="pt-[108px]">
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Central de atendimento
           </h3>
@@ -131,7 +138,7 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Programas">
+        <nav aria-label="Programas" className="pt-[108px]">
           <ul className="space-y-2">
             <li className="border-b border-black/15 pb-3">
               <Link href="#" className="font-display text-sm font-bold text-black transition hover:text-brand-pink-600">
@@ -155,17 +162,19 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div>
+        <div className="pt-[108px]">
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Acompanhe
           </h3>
-          <div className="mt-5 flex gap-3">
+          <div className="mt-5 flex h-8 items-center gap-4">
             {socials.map((s) => (
               <Link
                 key={s.name}
                 href={s.href}
                 aria-label={s.name}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/40 text-black transition hover:border-brand-pink-500 hover:text-brand-pink-600"
+                className={`flex h-8 items-center justify-center text-black transition hover:text-brand-pink-600 ${
+                  s.name === "Facebook" ? "-translate-y-0.5" : ""
+                }`}
               >
                 <s.icon />
               </Link>
@@ -173,7 +182,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="pt-[108px]">
           <h3 className="font-display text-sm font-bold uppercase tracking-widest text-black">
             Compre seguro
           </h3>
@@ -198,11 +207,51 @@ export function Footer() {
 
       <div className="scallop-divider mx-4 text-black/20 sm:mx-8" />
 
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 px-4 py-6 text-center text-xs text-black/50 lg:px-8">
-        <p>
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-5 px-4 py-6 text-center text-xs text-black/50 lg:px-8">
+        <p className="text-sm">
           © {new Date().getFullYear()} Bia Fashion Kids. Todos os direitos reservados. CNPJ 00.000.000/0001-00, Rua
           das Flores, nº 123, São Paulo, SP, Brasil.
         </p>
+
+        <div className="flex flex-wrap items-start justify-center gap-6">
+          <div>
+            <p className="mb-2 font-display text-xs font-bold uppercase tracking-wide text-black/60">
+              Desenvolvimento:
+            </p>
+            <div className="group flex h-10 cursor-pointer items-center justify-center overflow-visible rounded-md border border-black/10 px-5">
+              <Image
+                src="/footer/rchlabs-black.png"
+                alt="rchlabs"
+                width={320}
+                height={78}
+                className="h-24 w-auto object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-100"
+              />
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 font-display text-xs font-bold uppercase tracking-wide text-black/60">
+              Plataforma:
+            </p>
+            <div className="group relative flex h-10 cursor-pointer items-center justify-center rounded-md border border-black/10 px-5">
+              <Image
+                src="/footer/mercadopago-black.png"
+                alt="Mercado Pago"
+                width={140}
+                height={35}
+                className="h-8 w-auto object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-0"
+              />
+              <Image
+                src="/footer/mercadopago-color.png"
+                alt=""
+                aria-hidden="true"
+                width={140}
+                height={35}
+                className="absolute h-8 w-auto object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       <a
@@ -211,7 +260,7 @@ export function Footer() {
         rel="noopener noreferrer"
         aria-label="Abrir WhatsApp"
         title="Chat com a gente no WhatsApp!"
-        className="fixed bottom-6 left-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition hover:scale-105"
       >
         <WhatsAppIcon />
       </a>

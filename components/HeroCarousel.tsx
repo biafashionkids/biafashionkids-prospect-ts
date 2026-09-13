@@ -67,7 +67,7 @@ export function HeroCarousel() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="relative h-[220px] overflow-hidden sm:h-[340px] lg:h-[520px]">
+      <div className="relative h-[150px] overflow-hidden sm:h-[230px] lg:h-[360px]">
         <div
           className="flex h-full transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${index * 100}%)` }}

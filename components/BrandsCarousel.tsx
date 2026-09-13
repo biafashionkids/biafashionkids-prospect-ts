@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 
 type Brand = {
   id: string;
@@ -34,7 +35,9 @@ export function BrandsCarousel() {
   return (
     <section className="relative bg-white py-10" aria-label="Marcas">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide text-black">Nossas Marcas</h2>
+        <h2 className="text-center text-xl font-bold uppercase tracking-[0.3em] text-black sm:text-2xl">
+          Nossas Marcas
+        </h2>
         <div className="mx-auto mt-2 h-1 w-14 bg-black" />
       </div>
 
@@ -61,14 +64,22 @@ export function BrandsCarousel() {
 
       <div
         ref={scrollRef}
-        className="mt-8 flex snap-x snap-mandatory gap-[35px] overflow-x-auto scroll-smooth px-4 pb-2 sm:px-8 lg:justify-center lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2 sm:px-8 lg:justify-center lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {brands.map((brand) => (
-          <div key={brand.id} data-brand className="flex shrink-0 snap-start flex-col items-center gap-3">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full border border-dashed border-gray-300 bg-gray-50 text-xs text-gray-400 sm:h-28 sm:w-28">
-              Logo
+          <div
+            key={brand.id}
+            data-brand
+            className="flex w-1/3 shrink-0 snap-start flex-col items-center gap-4 sm:w-1/4 lg:w-1/6"
+          >
+            <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-xs text-gray-400 sm:h-32 sm:w-32">
+              {brand.image ? (
+                <Image src={brand.image} alt={brand.name} fill className="object-cover" sizes="128px" />
+              ) : (
+                "Logo"
+              )}
             </div>
-            <p className="text-sm font-semibold text-black">{brand.name}</p>
+            <p className="text-base font-bold text-black">{brand.name}</p>
           </div>
         ))}
       </div>

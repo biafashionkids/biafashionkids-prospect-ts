@@ -23,12 +23,16 @@ function UserIcon() {
   );
 }
 
-function OrdersIcon() {
+function ChatIcon() {
   return (
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M4 5.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1H9l-4 3.5V16H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M7 9.5h10M7 13h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }
@@ -54,23 +58,23 @@ export function Header() {
   const [cartCount] = useState(0);
 
   return (
-    <header className="relative z-50 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
       {/* Row 1: logo, search, account actions */}
       <div className="relative mx-auto flex max-w-7xl items-center gap-6 px-4 py-6 lg:gap-10 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center" aria-label="Bia Fashion Kids - página inicial">
           <Image
             src="/logo/biafashionkids-logo.jpg"
             alt="Bia Fashion Kids"
-            width={56}
-            height={56}
-            className="h-14 w-14 rounded-full object-cover"
+            width={68}
+            height={68}
+            className="h-[68px] w-[68px] rounded-full object-cover"
             priority
           />
         </Link>
 
         <form
           role="search"
-          className="hidden w-full max-w-[380px] items-center rounded-xl border border-gray-300 bg-white px-4 py-2 md:absolute md:left-1/2 md:flex md:-translate-x-1/2"
+          className="hidden w-full max-w-[380px] items-center rounded-xl border border-gray-300 bg-white px-4 py-2 md:absolute md:left-[38%] md:flex md:-translate-x-1/2"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
@@ -89,27 +93,39 @@ export function Header() {
         </form>
 
         <div className="ml-auto flex shrink-0 items-center gap-8 text-brand-ink">
-          <Link href="#" className="group hidden items-center gap-2 text-base text-gray-600 lg:flex">
-            <UserIcon />
-            <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
-              Minha Conta
+          <Link href="#" className="hidden items-center gap-2 text-gray-700 lg:flex">
+            <ChatIcon />
+            <span className="text-sm leading-tight">
+              Central de
+              <br />
+              <span className="font-bold text-black">Atendimento</span>
             </span>
           </Link>
-          <Link href="#" className="group hidden items-center gap-2 text-base text-gray-600 lg:flex">
-            <OrdersIcon />
-            <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
-              Meus Pedidos
+          <Link href="#" className="hidden items-center gap-2 text-gray-700 lg:flex">
+            <UserIcon />
+            <span className="text-sm leading-tight">
+              Olá, Bem-vindo(a)
+              <br />
+              <span className="font-bold text-black">Entre</span> ou{" "}
+              <span className="font-bold text-black">Cadastre-se</span>
             </span>
           </Link>
           <Link
             href="#carrinho"
-            className="flex items-center gap-1 text-gray-600"
+            className="flex items-center gap-2 text-gray-700"
             aria-label={`Carrinho, ${cartCount} itens`}
           >
-            <CartIcon />
-            {cartCount > 0 && (
-              <span className="text-sm font-bold text-brand-pink-600">({cartCount})</span>
-            )}
+            <span className="relative shrink-0">
+              <CartIcon />
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-pink-100 text-[11px] font-bold text-brand-pink-600">
+                {cartCount}
+              </span>
+            </span>
+            <span className="hidden text-sm leading-tight lg:block">
+              <span className="font-bold text-black">Minha Sacola</span>
+              <br />
+              R$ 0,00
+            </span>
           </Link>
         </div>
       </div>

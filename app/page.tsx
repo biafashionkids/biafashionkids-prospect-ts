@@ -6,6 +6,7 @@ import { meninosBestSellers, meninasBestSellers } from "@/data/bestSellers";
 import { BrandsCarousel } from "@/components/BrandsCarousel";
 import { PijamasPromo } from "@/components/PijamasPromo";
 import { Reviews } from "@/components/Reviews";
+import { NewsletterBanner } from "@/components/NewsletterBanner";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -18,7 +19,6 @@ export default function Home() {
         <BrandsCarousel />
         <BestSellers title="Conjuntos Vendidos para Meninos" items={meninosBestSellers} />
         <BestSellers title="Conjuntos Vendidos para Meninas" items={meninasBestSellers} />
-        <PijamasPromo />
         <Reviews />
       </main>
       <Footer />
