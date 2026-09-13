@@ -70,6 +70,15 @@ function CartIcon({ size = 38 }: { size?: number }) {
   );
 }
 
+function AdminIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3 5 6v5c0 4.5 2.9 8.1 7 10 4.1-1.9 7-5.5 7-10V6l-7-3Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Header() {
   const [cartCount] = useState(0);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
@@ -134,6 +143,9 @@ export function Header() {
             </Link>
 
             <div className="ml-auto flex items-center gap-4 text-brand-ink">
+              <Link href="/admin" aria-label="Abrir administração" className="rounded-full bg-brand-sky-100 px-2 py-1 text-[10px] font-black tracking-wide text-brand-sky-600">
+                ADM
+              </Link>
               <Link href="/entrar" aria-label="Entrar ou cadastrar-se">
                 <UserIcon size={26} />
               </Link>
@@ -182,6 +194,14 @@ export function Header() {
         </form>
 
         <div className="ml-auto flex shrink-0 items-center gap-8 text-brand-ink">
+          <Link
+            href="/admin"
+            className="hidden items-center gap-2 rounded-full bg-brand-sky-100 px-3 py-2 text-sm font-bold text-brand-sky-600 transition hover:bg-brand-sky-300 lg:flex"
+            aria-label="Abrir administração"
+          >
+            <AdminIcon />
+            Admin
+          </Link>
           <Link href="#" className="hidden items-center gap-2 text-gray-700 lg:flex">
             <ChatIcon />
             <span className="text-sm leading-tight">
