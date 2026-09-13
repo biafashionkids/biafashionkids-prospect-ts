@@ -74,9 +74,19 @@ export function AdminPanel() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productForm, setProductForm] = useState({ name: "", category: "Menina", price: "", stock: "", icon: "dress" as IconKey });
   const [saved, setSaved] = useState(false);
+  const [productSearch, setProductSearch] = useState("");
+  const [saleFilter, setSaleFilter] = useState<"Todos" | Sale["status"]>("Todos");
 
   const revenue = useMemo(() => sales.reduce((total, sale) => total + sale.total, 0), []);
   const averageTicket = revenue / sales.length;
+  const visibleProducts = useMemo(
+    () => products.filter((product) => product.name.toLowerCase().includes(productSearch.toLowerCase())),
+    [products, productSearch],
+  );
+  const visibleSales = useMemo(
+    () => (saleFilter === "Todos" ? sales : sales.filter((sale) => sale.status === saleFilter)),
+    [saleFilter],
+  );
 
   const navigate = (nextView: AdminView) => {
     setView(nextView);
@@ -192,7 +202,7 @@ export function AdminPanel() {
           )}
 
           {view === "sales" && (
-            <section className="rounded-xl2 bg-white p-5 shadow-card sm:p-7"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-sm text-brand-ink/55">Pedidos realizados na sua loja</p><h2 className="mt-1 text-2xl font-bold">Todas as vendas</h2></div><select className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500"><option>Últimos 30 dias</option><option>Este mês</option><option>Este ano</option></select></div><div className="mt-7 overflow-x-auto"><table className="w-full min-w-[680px] text-left text-sm"><thead className="border-b border-brand-ink/10 text-xs uppercase tracking-wider text-brand-ink/45"><tr><th className="pb-3 font-bold">Pedido</th><th className="pb-3 font-bold">Cliente</th><th className="pb-3 font-bold">Itens</th><th className="pb-3 font-bold">Data</th><th className="pb-3 font-bold">Total</th><th className="pb-3 text-right font-bold">Status</th></tr></thead><tbody className="divide-y divide-brand-ink/5">{sales.map((sale) => <tr key={sale.id}><td className="py-5 font-bold text-brand-pink-600">{sale.id}</td><td className="py-5 font-medium">{sale.customer}</td><td className="py-5 text-brand-ink/60">{sale.items} {sale.items === 1 ? "item" : "itens"}</td><td className="py-5 text-brand-ink/60">{sale.date}</td><td className="py-5 font-bold">{formatBRL(sale.total)}</td><td className="py-5 text-right"><StatusPill status={sale.status} /></td></tr>)}</tbody></table></div></section>
+            <section className="rounded-xl2 bg-white p-5 shadow-card sm:p-7"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-sm text-brand-ink/55">Pedidos realizados na sua loja</p><h2 className="mt-1 text-2xl font-bold">Todas as vendas</h2></div><select value={saleFilter} onChange={(event) => setSaleFilter(event.target.value as "Todos" | Sale["status"])} className="rounded-lg border border-brand-ink/15 bg-white px-3 py-2 text-sm outline-none focus:border-brand-pink-500"><option>Todos</option><option>Pago</option><option>Enviado</option><option>Aguardando</option></select></div><div className="mt-7 overflow-x-auto"><table className="w-full min-w-[680px] text-left text-sm"><thead className="border-b border-brand-ink/10 text-xs uppercase tracking-wider text-brand-ink/45"><tr><th className="pb-3 font-bold">Pedido</th><th className="pb-3 font-bold">Cliente</th><th className="pb-3 font-bold">Itens</th><th className="pb-3 font-bold">Data</th><th className="pb-3 font-bold">Total</th><th className="pb-3 text-right font-bold">Status</th></tr></thead><tbody className="divide-y divide-brand-ink/5">{visibleSales.map((sale) => <tr key={sale.id}><td className="py-5 font-bold text-brand-pink-600">{sale.id}</td><td className="py-5 font-medium">{sale.customer}</td><td className="py-5 text-brand-ink/60">{sale.items} {sale.items === 1 ? "item" : "itens"}</td><td className="py-5 text-brand-ink/60">{sale.date}</td><td className="py-5 font-bold">{formatBRL(sale.total)}</td><td className="py-5 text-right"><StatusPill status={sale.status} /></td></tr>)}</tbody></table></div>{visibleSales.length === 0 && <p className="mt-6 rounded-lg bg-brand-sky-100 px-4 py-3 text-sm font-medium text-brand-sky-600">Nenhuma venda encontrada para esse status.</p>}</section>
           )}
 
           {view === "products" && (
