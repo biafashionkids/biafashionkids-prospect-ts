@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+
 
 import { FormEvent, useMemo, useState } from "react";
 import { formatBRL, products as initialProducts, type IconKey, type Product } from "@/data/products";
@@ -167,9 +169,7 @@ export function AdminPanel() {
         </nav>
 
         <div className="absolute bottom-7 left-6 right-6 border-t border-brand-ink/10 pt-5">
-          <a href="/" className="flex items-center justify-between text-sm font-bold text-brand-ink/60 transition hover:text-brand-pink-600">
-            Ver loja <Icon name="arrow" />
-          </a>
+         <Link href="/" className="...">Voltar ao site</Link>
         </div>
       </aside>
 
